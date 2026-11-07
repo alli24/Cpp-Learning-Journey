@@ -1,4 +1,4 @@
-Basic Problems - C++
+05 - Algorithms & Problem-Solving – Level 2
 
 This repository contains a collection of basic programming problems solved using C++.
 
