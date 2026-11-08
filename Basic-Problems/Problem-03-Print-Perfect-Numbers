@@ -1,1 +1,63 @@
+  #include <iostream> // Include the iostream library for input/output operations
+  #include <string>   // Include the string library to ues std::string
+  using namespace std; // Use the standard namespace to avoid writing std:: before standard functions
 
+  // Fuction: ReadPositiveNumber 
+  // Purpose: Prompts the user with a custom message to enter a positive number.
+  //          The function repeatedly asks until the user enters a number greater than zero.
+  // Parameter: Message - a string that will be displayed to the user as a prompt.
+  // Returns: An integer representing the positive number input by the user.
+
+  int ReadPositiveNumber(string Message)
+  {
+	int Number = 0; // Initialize a variable to store the user's input.
+	do
+	{
+		cout << Message << endl; // Display the prompt message.
+		cin >> Number;           // Read the user's input.
+	} while (Number <= 0);       // Continue looping until a positive number is entered.
+
+	return Number;             // Return the validated positive number.
+  }
+
+// Function: isPerfectNumber
+// Purpose: Determines whether a given integer is a perfect number.
+//          A perfect number is one that equals the sum of its proper divisors (excluding itself).
+// Parameter: Number - the integer to be checked.
+// Returns: A boolean value: true if Number is perfect, false otherwise.
+bool IsPerfectNumber(int number)
+{
+	int Sum = 0; // Initialize the sum of proper divisors.
+
+	 // Loop through all numbers from 1 to Number-1.
+	// These numbers are potential proper divisors of Number.
+	for (int i = 1; i < number ; i++)
+	{
+		// If 'i' divides Number without a remainder, it is a proper divisor.
+		if (number % i == 0)
+			Sum += i; // Add the divisor to the sum.
+	}
+
+	// A number is perfect if the sum of its proper divisors equals the number itself.
+	return number == Sum;
+}
+// Function: PrintPerfectNumbersFrom1ToN
+// Purpose: Prints all perfect numbers between 1 and a given upper limit (inclusive).
+// Parameter: Number - the upper limit for checking perfect numbers.
+void PrintResults(int Number)
+{
+    // Check if the number is perfect using the isPerfectNumber function.
+    if (isPerfectNumber(Number))
+        cout << Number << " Is Perfect Number.\n";  // If true, print that the number is perfect.
+    else
+        cout << Number << " Is NOT Perfect Number.\n"; // Otherwise, print that it is not perfect.
+}
+
+// Main function: Entry point of the program.
+int main()
+{
+	  // Prompt the user to enter a positive number and then display whether it's a perfect number.
+    PrintResults(ReadPositiveNumber("Please enter a positive number?"));
+
+	return 0;  // Return 0 to indicate successful execution.
+}
